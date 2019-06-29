@@ -22,10 +22,33 @@ The objective of this analysis is to utilize non-parametric methods of survival 
 - What are the significant factors that drive customer churn?
 
 **Kaplan-Meier Survival Curve:**
-![survivalcurve](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/tree/master/Images/SurvivalCurve.png)
 
+![survivalcurve](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/SurvivalCurve.png)
 
+From above graph, we can say that
+- If customer does not churn after 1-2 months, his or her probability of churning decreases rapidly.
+- There is a constant decrease in churning probability between 3-60 months.
+- After 60 months or 5 years, churing probability decreases with a higher rate and we can say that the customers have become loyal to the service.
 
+**Log-Rank Test:** 
+
+Log-rank test is carried out to analyze churning probabilities group wise and the plots below show same.
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/gender.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/Senior%20Citizen.png)
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/partner.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/dependents.png)
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/phoneservice.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/MultipleLines.png)
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/InternetService.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/OnlineSecurity.png)
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/OnlineBackup.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/DeviceProtection.png)
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/TechSupport.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/StreamingTv.png)
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/Contract.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/StreamingMovies.png)
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/paymentmethod.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/PaperlessBilling.png)
 
 
 
