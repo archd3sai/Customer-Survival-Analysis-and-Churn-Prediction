@@ -61,15 +61,17 @@ From above graphs we can conclude following:
 ## Customer Churn Prediction
 I aim to implement machine learning model to accurately predict if the customer will churn or not.
 
-**Analysis**
+### Analysis
 
-Churn and Tenure Relationship:
+**Churn and Tenure Relationship:
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/tenure-churn.png)
 
-Monthly Charges:
+**Monthly Charges:
+
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/monthlycharges.png)
 
-Total Charges:
+**Total Charges:
+
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/totalcharges.png)
 
 From above plots, we can say that there is a less probability of churning of customers who spend less on services and whose monthly charges are less.
@@ -77,6 +79,7 @@ From above plots, we can say that there is a less probability of churning of cus
 **Modelling**
 
 Logistic Regression Model:
+
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/l1.png)
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/f1.png)
 
