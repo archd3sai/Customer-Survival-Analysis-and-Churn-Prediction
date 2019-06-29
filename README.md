@@ -59,4 +59,34 @@ From above graphs we can conclude following:
 - If customer's paying method is automatic, he or she is more likely to churn.
 
 ## Customer Churn Prediction
-logistic regression with synthetic minority oversampling technique (SMOTE). 
+I aim to implement machine learning model to accurately predict if the customer will churn or not.
+
+**Analysis**
+
+Churn and Tenure Relationship:
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/tenure-churn.png)
+
+Monthly Charges:
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/monthlycharges.png)
+
+Total Charges:
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/totalcharges.png)
+
+From above plots, we can say that there is a less probability of churning of customers who spend less on services and whose monthly charges are less.
+
+**Modelling**
+
+Logistic Regression Model:
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/l1.png)
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/f1.png)
+
+In the data, we have less number of customers who stopped their service so model fit more on data with churn feature as a No. This is a problem of class imbalance and to deal with that, I carried out oversampling using synthetic minority oversampling technique (SMOTE). Then applying Logistic Regression model we get better results which can be seen below.
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/l2.png)
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/f2.png)
+
+From the feature importance analysis, we can see the coefficients of variables and how they affect the churning of customer.
+
+
+
+
