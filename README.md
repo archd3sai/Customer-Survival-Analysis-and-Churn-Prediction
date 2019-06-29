@@ -50,10 +50,13 @@ Log-rank test is carried out to analyze churning probabilities group wise and th
 
 <img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/paymentmethod.png" width="425"/> <img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/PaperlessBilling.png" width="425"/> 
 
-
-
-
-
+From above graphs we can conclude following:
+- Customer's Gender and the type of phone service he has does not tell us whether the customer will churn or not.
+- If customer is senior setizen and/or single and/or does not have dependents, he or she is less likely to churn.
+- If customer is not enrolled in services like online backup, online security, device protection, tech support, streaming Tv and streaming movies, customer's churning probability is significantly less.
+- The company should traget customers who do not opt for internet service as their churning probability remains high throughout the tenure.
+- More offers should be given to customers who opt for two year contract as the end of their contract to retain them.
+- If customer's paying method is automatic, he or she is more likely to churn.
 
 ## Customer Churn Prediction
 logistic regression with synthetic minority oversampling technique (SMOTE). 
