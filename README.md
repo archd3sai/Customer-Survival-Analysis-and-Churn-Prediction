@@ -15,15 +15,16 @@ Survival analysis is generally defined as a set of methods for analyzing data wh
 
 For example, if the event of interest is heart attack, then the survival time can be the time in years until a person develops a heart attack.
 
-**Project Objective:**
-The objective of this project is to explore non-parametric methods of survival analysis to perform the analysis of the customer churn. 
-
-This analysis can be useful to answer the following questions.
+**Objective:**
+The objective of this analysis is to utilize non-parametric methods of survival analysis to answer the following questions.
 - How the likelihood of the customer churn changes over time?
 - How we can model the relationship between customer churn, time, and other customer characteristics?
 - What are the significant factors that drive customer churn?
 
-**Analysis:**
+**Kaplan-Meier Survival Curve:**
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/tree/master/Images/SurvivalCurve.png)
+
+
 
 
 
