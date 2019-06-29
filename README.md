@@ -22,7 +22,7 @@ The objective of this analysis is to utilize non-parametric methods of survival 
 - What are the significant factors that drive customer churn?
 
 **Kaplan-Meier Survival Curve:**
-![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/tree/master/Images/SurvivalCurve.png)
+![survivalcurve](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/tree/master/Images/SurvivalCurve.png)
 
 
 
