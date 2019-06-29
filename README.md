@@ -34,11 +34,11 @@ From above graph, we can say that
 
 Log-rank test is carried out to analyze churning probabilities group wise and the plots below show same.
 
-![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/gender.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/Senior%20Citizen.png)
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/gender.png) | ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/Senior%20Citizen.png)
 
-![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/partner.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/dependents.png)
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/partner.png) | ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/dependents.png)
 
-![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/phoneservice.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/MultipleLines.png)
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/phoneservice.png) | ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/MultipleLines.png)
 
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/InternetService.png) ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/OnlineSecurity.png)
 
