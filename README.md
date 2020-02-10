@@ -21,8 +21,8 @@ The objective of this analysis is to utilize non-parametric methods of survival 
 - How we can model the relationship between customer churn, time, and other customer characteristics?
 - What are the significant factors that drive customer churn?
 
+## Project Organization
 ```
-/Project Organization
 ├── flaskr/
 │   ├── __init__.py
 │   ├── db.py
