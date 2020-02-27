@@ -2,34 +2,122 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Deployment Tutorial 1</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+  <title>Customer Churn Prediction</title>
 </head>
 
-<body style="background: #000;">
+<body style="background: Black" text="white">
+
  <div class="login">
-	<h1>Customer CHurn Prediction</h1>
+	<center><h1>Customer Churn Prediction</h1></center>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="number" name="SeniorCitizen" placeholder="SeniorCitizen" required="required" />
-        <input type="number" name="Partner" placeholder="Partner" required="required" />
-        <input type="number" name="Dependents" placeholder="Dependents" required="required" />
-		<input type="number" name="InternetService" placeholder="InternetService" required="required" />
 
+      <center>
+      <input type="checkbox" id="SeniorCitizen" name="SeniorCitizen" value=1>
+      <label for="SeniorCitizen"> Senior Citizen</label> &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="Partner" name="Partner" value=1>
+      <label for="Partner">Has a partner</label> &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="Dependents" name="Dependents" value=1>
+      <label for="Dependents">Has dependents</label>&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="PaperlessBilling" name="PaperlessBilling" value=1>
+      <label for="PaperlessBilling">Paperless Billing</label>
+      </center>
+      <br>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict Churning</button>
+      <center>
+      <label for="OnlineSecurity">Online Security:</label>
+        <select id="OnlineSecurity" name="OnlineSecurity">
+            <option value=0>No</option>
+            <option value=1>Yes</option>
+              <option value=2>No Internet</option>
+        </select> &nbsp;&nbsp;
+
+      <label for="OnlineBackup">Online Backup:</label>
+        <select id="OnlineBackup" name="OnlineBackup">
+            <option value=0>No</option>
+            <option value=1>Yes</option>
+              <option value=2>No Internet</option>
+      </select>
+    </center><br>
+
+    <center>
+      <label for="DeviceProtection">Device Protection:</label>
+        <select id="DeviceProtection" name="DeviceProtection">
+            <option value=0>No</option>
+            <option value=1>Yes</option>
+              <option value=2>No Internet</option>
+        </select>
+      &nbsp;&nbsp;
+        <label for="TechSupport">Tech Support:</label>
+        	<select id="TechSupport" name="TechSupport">
+          		<option value=0>No</option>
+          		<option value=1>Yes</option>
+                <option value=2>No Internet</option>
+        	</select>
+      </center><br>
+
+      <center>
+      <label for="StreamingTV">Streaming TV:</label>
+      	<select id="StreamingTV" name="StreamingTV">
+        		<option value=0>No</option>
+        		<option value=1>Yes</option>
+              <option value=2>No Internet</option>
+      	</select>
+      &nbsp;&nbsp;
+      <label for="StreamingMovies">Streaming Movies:</label>
+      	<select id="StreamingMovies" name="StreamingMovies">
+        		<option value=0>No</option>
+        		<option value=1>Yes</option>
+              <option value=2>No Internet</option>
+      	</select></center>
+
+      <center><br>
+      <label for="InternetService">Internet Service:</label>
+      	<select id="InternetService" name="InternetService">
+        		<option value=0>No</option>
+        		<option value=1>DSL</option>
+              <option value=2>Fiber optic</option>
+      	</select>
+
+ <br><br>
+
+ <center>
+
+<label for="Contract">Contract:</label>
+	<select id="Contract" name="Contract">
+  		<option value=0>Month-to-Month</option>
+  		<option value=1>One-Year</option>
+        <option value=2>Two-Year</option>
+	</select>
+  &nbsp;&nbsp;
+
+<label for="PaymentMethod">PaymentMethod:</label>
+	<select id="PaymentMethod" name="PaymentMethod">
+  		<option value=0>Automatic: Bank Transfer</option>
+  		<option value=1>Automatic: Credit Card</option>
+        <option value=2>Electronic Check</option>
+        <option value=3>Mailed Check</option>
+	</select>
+</center>
+<br>
+<center>
+		<input type="number"  min="0" name="MonthlyCharges" placeholder="Monthly Charges" required="required" />
+<input type="number"  min="0" name="Tenure" placeholder="Tenure in Months" required="required" />
+
+</center>
+<br><br>
+
+<center>
+<button type="submit" class="btn btn-primary btn-block btn-large" style="height:30px;width:200px">Predict</button>
+</center>
     </form>
 
    <br>
    <br>
+   <center>
    {{ prediction_text }}
-
+	</center>
  </div>
 
 
