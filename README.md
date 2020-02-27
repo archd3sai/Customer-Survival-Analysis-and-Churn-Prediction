@@ -22,6 +22,7 @@ In this project I aim to perform customer survival analysis and build a model wh
 ├── app.py
 ├── model.pkl
 ├── requirements.txt
+├── LICENSE.md
 └── README.md
 ```
 
