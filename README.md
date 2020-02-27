@@ -8,19 +8,6 @@ predictive analytics use churn prediction models that predict customer churn by 
 
 In this project I aim to perform customer survival analysis and build a model which can predict customer churn.
 
-## Customer Survival Analysis
-
-**Survival Analysis:** 
-Survival analysis is generally defined as a set of methods for analyzing data where the outcome variable is the time until the occurrence of an event of interest. The event can be death, occurrence of a disease, marriage, divorce, etc. The time to event or survival time can be measured in days, weeks, years, etc.
-
-For example, if the event of interest is heart attack, then the survival time can be the time in years until a person develops a heart attack.
-
-**Objective:**
-The objective of this analysis is to utilize non-parametric methods of survival analysis to answer the following questions.
-- How the likelihood of the customer churn changes over time?
-- How we can model the relationship between customer churn, time, and other customer characteristics?
-- What are the significant factors that drive customer churn?
-
 ## Project Organization
 ```
 .
@@ -37,6 +24,19 @@ The objective of this analysis is to utilize non-parametric methods of survival 
 ├── requirements.txt
 └── README.md
 ```
+
+## Customer Survival Analysis
+
+**Survival Analysis:** 
+Survival analysis is generally defined as a set of methods for analyzing data where the outcome variable is the time until the occurrence of an event of interest. The event can be death, occurrence of a disease, marriage, divorce, etc. The time to event or survival time can be measured in days, weeks, years, etc.
+
+For example, if the event of interest is heart attack, then the survival time can be the time in years until a person develops a heart attack.
+
+**Objective:**
+The objective of this analysis is to utilize non-parametric methods of survival analysis to answer the following questions.
+- How the likelihood of the customer churn changes over time?
+- How we can model the relationship between customer churn, time, and other customer characteristics?
+- What are the significant factors that drive customer churn?
 
 **Kaplan-Meier Survival Curve:**
 
