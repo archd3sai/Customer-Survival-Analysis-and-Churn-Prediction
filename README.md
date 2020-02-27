@@ -23,33 +23,19 @@ The objective of this analysis is to utilize non-parametric methods of survival 
 
 ## Project Organization
 ```
-├── flaskr/
-│   ├── __init__.py
-│   ├── db.py
-│   ├── schema.sql
-│   ├── auth.py
-│   ├── blog.py
-│   ├── templates/
-│   │   ├── base.html
-│   │   ├── auth/
-│   │   │   ├── login.html
-│   │   │   └── register.html
-│   │   └── blog/
-│   │       ├── create.html
-│   │       ├── index.html
-│   │       └── update.html
-│   └── static/
-│       └── style.css
-├── tests/
-│   ├── conftest.py
-│   ├── data.sql
-│   ├── test_factory.py
-│   ├── test_db.py
-│   ├── test_auth.py
-│   └── test_blog.py
-├── venv/
-├── setup.py
-└── MANIFEST.in
+.
+├── Images/
+├── static/
+│   └── images/
+│       └── new_plot.png
+├── templates/
+│   └── index.html
+├── Customer Survival Analysis.ipynb
+├── main.ipynb
+├── app.py
+├── model.pkl
+├── requirements.txt
+└── README.md
 ```
 
 **Kaplan-Meier Survival Curve:**
