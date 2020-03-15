@@ -11,19 +11,19 @@ In this project I aim to perform customer survival analysis and build a model wh
 ## Project Organization
 ```
 .
-├── Images/
-├── static/
+├── Images/                             : contains images for report
+├── static/                             : contains gauge chart to show churn probability in Flask App 
 │   └── images/
 │       └── new_plot.png
-├── templates/
+├── templates/                          : contains html template for flask app
 │   └── index.html
-├── Customer Survival Analysis.ipynb
-├── main.ipynb
-├── app.py
-├── model.pkl
-├── requirements.txt
-├── LICENSE.md
-└── README.md
+├── Customer Survival Analysis.ipynb    : Survival Analysis kaplan-Meier curve and log-rank test
+├── main.ipynb                          : Data Analysis and Random Forest model building
+├── app.py                              : Flask App
+├── model.pkl                           : Random Forest model
+├── requirements.txt                    : requirements to run this model
+├── LICENSE.md                          : MIT License
+└── README.md                           : Report
 ```
 
 ## Customer Survival Analysis
