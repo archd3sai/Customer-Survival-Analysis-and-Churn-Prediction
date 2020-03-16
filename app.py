@@ -1,9 +1,13 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template
 import pickle
+import joblib
+import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, Wedge, Rectangle
+import shap
+shap.initjs()
 import time
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
@@ -115,10 +119,16 @@ def predict():
 
     features = [SeniorCitizen, Partner, Dependents, PaperlessBilling, MonthlyCharges, tenure_group, InternetService_Fiberoptic, InternetService_No, OnlineSecurity_Nointernetservice, OnlineSecurity_Yes, OnlineBackup_Nointernetservice, OnlineBackup_Yes, DeviceProtection_Nointernetservice,DeviceProtection_Yes, TechSupport_Nointernetservice,TechSupport_Yes, StreamingTV_Nointernetservice, StreamingTV_Yes,StreamingMovies_Nointernetservice, StreamingMovies_Yes,Contract_Oneyear,Contract_Twoyear,PaymentMethod_CreditCard, PaymentMethod_ElectronicCheck, PaymentMethod_MailedCheck]
 
+    columns = ['SeniorCitizen', 'Partner', 'Dependents', 'PaperlessBilling', 'MonthlyCharges', 'tenure_group', 'InternetService_Fiber optic', 'InternetService_No', 'OnlineSecurity_No internet service', 'OnlineSecurity_Yes', 'OnlineBackup_No internet service', 'OnlineBackup_Yes', 'DeviceProtection_No internet service', 'DeviceProtection_Yes', 'TechSupport_No internet service', 'TechSupport_Yes', 'StreamingTV_No internet service', 'StreamingTV_Yes', 'StreamingMovies_No internet service', 'StreamingMovies_Yes', 'Contract_One year', 'Contract_Two year', 'PaymentMethod_Credit card (automatic)', 'PaymentMethod_Electronic check', 'PaymentMethod_Mailed check']
+
     final_features = [np.array(features)]
     prediction = model.predict_proba(final_features)
 
     output = prediction[0,1]
+
+    explainer = joblib.load(filename="explainer.bz2")
+    shap_values = explainer.shap_values(np.array(final_features))
+    shap.force_plot(explainer.expected_value[1], shap_values[1], columns, matplotlib = True, show = False).savefig('static/images/shap.png', bbox_inches="tight")
 
     def degree_range(n):
         start = np.linspace(0,180,n+1, endpoint=True)[0:-1]
@@ -203,8 +213,9 @@ def predict():
         plt.savefig('static/images/new_plot.png')
 
     gauge(Probability = output)
+
     t = time.time()
-    return render_template('index.html', prediction_text='The Probability of customer churn: {}'.format(round(output, 2)), url ='static/images/new_plot.png?{}'.format(t))
+    return render_template('index.html', prediction_text='The Probability of customer churn: {}'.format(round(output, 2)), url_1 ='static/images/new_plot.png?{}'.format(t), url_2 ='static/images/shap.png?{}'.format(t))
 
 
 if __name__ == "__main__":
