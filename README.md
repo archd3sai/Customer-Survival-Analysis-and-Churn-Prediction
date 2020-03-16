@@ -20,6 +20,8 @@ In this project I aim to perform customer survival analysis and build a model wh
 ├── Customer Survival Analysis.ipynb    : Survival Analysis kaplan-Meier curve and log-rank test
 ├── main.ipynb                          : Data Analysis and Random Forest model building
 ├── app.py                              : Flask App
+├── app.png                             : Final App image  
+├── explainer.bz2                       : Shap Explainer
 ├── model.pkl                           : Random Forest model
 ├── requirements.txt                    : requirements to run this model
 ├── LICENSE.md                          : MIT License
