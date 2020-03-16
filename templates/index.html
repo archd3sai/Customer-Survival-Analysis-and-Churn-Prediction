@@ -9,6 +9,7 @@
 
  <div class="login">
 	<center><h1>Customer Churn Prediction</h1></center>
+    <center><h4>Author: Arch Desai</h4></center>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
@@ -38,26 +39,25 @@
             <option value=0>No</option>
             <option value=1>Yes</option>
               <option value=2>No Internet</option>
-      </select>
-    </center><br>
+      </select>&nbsp;&nbsp;
 
-    <center>
       <label for="DeviceProtection">Device Protection:</label>
         <select id="DeviceProtection" name="DeviceProtection">
             <option value=0>No</option>
             <option value=1>Yes</option>
               <option value=2>No Internet</option>
         </select>
-      &nbsp;&nbsp;
+        </center><br>
+
+    <center>
+
         <label for="TechSupport">Tech Support:</label>
         	<select id="TechSupport" name="TechSupport">
           		<option value=0>No</option>
           		<option value=1>Yes</option>
                 <option value=2>No Internet</option>
-        	</select>
-      </center><br>
+        	</select>&nbsp;&nbsp;
 
-      <center>
       <label for="StreamingTV">Streaming TV:</label>
       	<select id="StreamingTV" name="StreamingTV">
         		<option value=0>No</option>
@@ -73,16 +73,12 @@
       	</select></center>
 
       <center><br>
-      <label for="InternetService">Internet Service:</label>
+      <label for="InternetService">Internet :</label>
       	<select id="InternetService" name="InternetService">
         		<option value=0>No</option>
         		<option value=1>DSL</option>
               <option value=2>Fiber optic</option>
-      	</select>
-
- <br><br>
-
- <center>
+      	</select> &nbsp;&nbsp;
 
 <label for="Contract">Contract:</label>
 	<select id="Contract" name="Contract">
@@ -92,7 +88,7 @@
 	</select>
   &nbsp;&nbsp;
 
-<label for="PaymentMethod">PaymentMethod:</label>
+<label for="PaymentMethod">Payment:</label>
 	<select id="PaymentMethod" name="PaymentMethod">
   		<option value=0>Automatic: Bank Transfer</option>
   		<option value=1>Automatic: Credit Card</option>
@@ -112,15 +108,20 @@
 <button type="submit" class="btn btn-primary btn-block btn-large" style="height:30px;width:200px">Predict</button>
 </center>
     </form>
-
-   <br>
-   <br>
+<br>
    <center>
+
    {{ prediction_text }}
-	</center>
+
 
   <br>
-  <img src= {{url}} alt="Chart" height="350" width="500">
+  <br>
+  <input type="image" src= {{url_1}} alt="Submit Form" height="100" width="160" onerror="this.style.display='none'"/>
+
+  <br>
+  <br>
+  <input type="image" src= {{url_2}} alt="Submit Form" height="130" width="750" onerror="this.style.display='none'"/>
+  </center>
  </div>
 
 
