@@ -8,6 +8,9 @@ predictive analytics use churn prediction models that predict customer churn by 
 
 In this project I aim to perform customer survival analysis and build a model which can predict customer churn.
 
+## Final Customer Churn Prediction App
+<img src=https://github.com/archd3sai/Customer-Survival-Analysis-and-Churn-Prediction/blob/master/app.png>
+
 ## Project Organization
 ```
 .
@@ -27,9 +30,6 @@ In this project I aim to perform customer survival analysis and build a model wh
 ├── LICENSE.md                          : MIT License
 └── README.md                           : Report
 ```
-
-## Final Customer Churn Prediction App
-<img src=https://github.com/archd3sai/Customer-Survival-Analysis-and-Churn-Prediction/blob/master/app.png>
 
 ## Customer Survival Analysis
 
@@ -135,13 +135,15 @@ We can explain and understand the Random forest model using explainable AI modua
 
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/pdp-tenure.png)
 
-3. Shap values (SHapley Additive exPlanations) is a game theoretic approach to explain the output of any machine learning model. In below plot we can see that why a particual customer's churning probability is higher than baseline value and which features are causing them.
+3. Shap values (SHapley Additive exPlanations) is a game theoretic approach to explain the output of any machine learning model. In below plot we can see that why a particual customer's churning probability is less than baseline value and which features are causing them.
 
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/shap.png)
 
 ## Flask App
 
-I saved the final tuned Random Forest model and deployed it using Flask web app. Flask is a micro web framework written in Python.  It is designed to make getting started quick and easy, with the ability to scale up to complex applications. The app shows churning probability, gauge chart of how severe a customer is and shap values based on customer's data. The final app layout can be seen above.  
+I saved the final tuned Random Forest model and deployed it using Flask web app. Flask is a micro web framework written in Python.  It is designed to make getting started quick and easy, with the ability to scale up to complex applications. I also saved the shap value explainer tuned using random forest model to show shap plots in app. 
+
+The final app shows churning probability, gauge chart of how severe a customer is and shap values based on customer's data. The final app layout can be seen above.  
 
 
 
