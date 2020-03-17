@@ -91,26 +91,39 @@ I aim to implement a machine learning model to accurately predict if the custome
 
 - As we can see the higher the tenure, the lesser the churn rate. This tells us that the customer becomes loyal with the tenure.
 
+<br />
+
 **Tenure Distrbution by Various Services:**
+
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/tenure-dist.png)
 
 - When the customers are new they do not opt for various services and their churning rate is very high. This can be seen in above plot for Streaming Movies and this holds true for all various services.
 
+<br />
+
 **Internet Service By Contract Type:**
+
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/internetservice-contract.png)
 
 - Many of the people of who opt for month-to-month Contract choose Fiber optic as Internet service and this is the reason for higher churn rate for fiber optic Internet service type.
 
+<br />
+
 **Payment method By Contract Type:**
+
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/payment-contract.png)
 
 - People having month-to-month contract prefer paying by Electronic Check mostly or mailed check. The reason might be short subscription cancellation process compared to automatic payment.
+
+<br />
 
 **Monthly Charges:**
 
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/monthlycharges.png)
 
 - As we can see the customers paying high monthly fees churn more.
+
+<br />
 
 ### Modelling
 
