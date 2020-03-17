@@ -142,7 +142,7 @@ We can explain and understand the Random forest model using explainable AI modua
 
 1. Permutation Importance shows feature importance by randomly shuffling feature values and measuring how much it degrades our performance.
 
-![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/l2.png)
+<img src=https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/perm_imp.png height=250 width=180> 
 
 2. Partial dependance plot is used to see how churning probability changes across the range of particular feature. For example, in below graph of tenure group, the churn probability decreases at a higher rate if a person is in tenure group 2 compared to 1.
 
