@@ -28,6 +28,9 @@ In this project I aim to perform customer survival analysis and build a model wh
 └── README.md                           : Report
 ```
 
+## Final Customer Churn Prediction App
+<img src=https://github.com/archd3sai/Customer-Survival-Analysis-and-Churn-Prediction/blob/master/app.png>
+
 ## Customer Survival Analysis
 
 **Survival Analysis:** 
