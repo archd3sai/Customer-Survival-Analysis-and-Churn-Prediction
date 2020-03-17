@@ -55,7 +55,7 @@ From above graph, we can say that
 
 **Log-Rank Test:** 
 
-Log-rank test is carried out to analyze churning probabilities group wise and the plots below show same.
+Log-rank test is carried out to analyze churning probabilities group wise and to find if there is statistical significance between groups. The plots show survival curve group wise.
 
 <img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/gender.png" width="425"/> <img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/Senior%20Citizen.png" width="425"/> 
 
@@ -74,34 +74,47 @@ Log-rank test is carried out to analyze churning probabilities group wise and th
 <img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/paymentmethod.png" width="425"/> <img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/PaperlessBilling.png" width="425"/> 
 
 From above graphs we can conclude following:
-- Customer's Gender and the phone service type are not indictive features.
-- If customer is senior setizen and/or single and/or does not have dependents, he or she is less likely to churn. The reason might be low monthly payment for a single person. 
-- If customer is not enrolled in services like online backup, online security, device protection, tech support, streaming Tv and streaming movies, customer's churning probability is significantly less.
-- The company should traget customers who do not opt for internet service as their churning probability remains high throughout the tenure.
-- More offers should be given to customers who opt for two year contract as the end of their contract to retain them. 
-- If customer's paying method is automatic, he or she is more likely to churn.
+- Customer's Gender and the phone service type are not indictive features and their p value of log rank test is above threshold value 0.05.
+- If customer is young and has a family, he or she is less likely to churn. The reason might be the busy life, more money or another factors.
+- If customer is not enrolled in services like online backup, online security, device protection, tech support, streaming Tv and streaming movies even though having active internet service, the survival probability is less.
+- The company should traget customers who opt for internet service as their survival probability constantly descreases. Also, Fiber Optilc type of Internet Service is costly and fast compared to DSL and this might be the reason of higher customer churning. 
+- More offers should be given to customers who opt for month-to-month contract and company should target customers to subscribe for long-term service. 
+- If customer's paying method is automatic, he or she is less likely to churn. The reason is in the case of electronic check and mailed check, a customer has to make an effort to pay and it takes time.
 
 ## Customer Churn Prediction
-I aim to implement machine learning model to accurately predict if the customer will churn or not.
+I aim to implement a machine learning model to accurately predict if the customer will churn or not.
 
 ### Analysis
 
 **Churn and Tenure Relationship:**
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/tenure-churn.png)
 
+- As we can see the higher the tenure, the lesser the churn rate. This tells us that the customer becomes loyal with the tenure.
+
+**Tenure Distrbution by Various Services:**
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/tenure-dist.png)
+
+- When the customers are new they do not opt for various services and their churning rate is very high. This can be seen in above plot for Streaming Movies and this holds true for all various services.
+
+**Internet Service By Contract Type:**
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/internetservice-contract.png)
+
+- Many of the people of who opt for month-to-month Contract choose Fiber optic as Internet service and this is the reason for higher churn rate for fiber optic Internet service type.
+
+**Payment method By Contract Type:**
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/payment-contract.png)
+
+- People having month-to-month contract prefer paying by Electronic Check mostly or mailed check. The reason might be short subscription cancellation process compared to automatic payment.
+
 **Monthly Charges:**
 
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/monthlycharges.png)
 
-**Total Charges:**
-
-![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/totalcharges.png)
-
-From above plots, we can say that there is a less probability of churning of customers who spend less on services and whose monthly charges are less.
+- As we can see the customers paying high monthly fees churn more.
 
 ### Modelling
 
-Logistic Regression Model:
+For the modelling, I will use tress based Ensemble method as we do not have linear 
 
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/l1.png)
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/f1.png)
