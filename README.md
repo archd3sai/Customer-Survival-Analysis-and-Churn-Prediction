@@ -114,17 +114,34 @@ I aim to implement a machine learning model to accurately predict if the custome
 
 ### Modelling
 
-For the modelling, I will use tress based Ensemble method as we do not have linear 
+For the modelling, I will use tress based Ensemble method as we do not have linearity in this classification problem. Also, we have a class imbalance of 1:3 and to combat it I will assign class weightage of 1:3 which means false negatives are 3 times costlier than false positives. I built a model on 80% of data and validated model on remaining 20% of data keeping in mind that I do not have data leakage. The random forest model has many hyperparameters and I tuned them using Grid Search Cross Validation while making sure that I do not overfit.
 
-![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/l1.png)
-![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/f1.png)
-
-In the data, we have less number of customers who stopped their service so model fit more on data with churn feature as a No. This is a problem of class imbalance and to deal with that, I carried out oversampling using synthetic minority oversampling technique (SMOTE). Then applying Logistic Regression model we get better results which can be seen below.
+The final model resulted in 0.78 weightaed F1 score and 0.72 ROC-AUC. The resulting plots can be seen below.
 
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/l2.png)
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/f2.png)
 
-From the feature importance analysis, we can see the coefficients of variables and how they affect the churning of customer.
+From the feature importance plot, we can see which features govern the customer churn.
+
+### Explainability
+
+We can explain and understand the Random forest model using explainable AI moduals such as Permutation Importance, Partial Dependance plots and Shap values.
+
+1. Permutation Importance shows feature importance by randomly shuffling feature values and measuring how much it degrades our performance.
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/l2.png)
+
+2. Partial dependance plot is used to see how churning probability changes across the range of particular feature. For example, in below graph of tenure group, the churn probability decreases at a higher rate if a person is in tenure group 2 compared to 1.
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/pdp-tenure.png)
+
+3. Shap values (SHapley Additive exPlanations) is a game theoretic approach to explain the output of any machine learning model. In below plot we can see that why a particual customer's churning probability is higher than baseline value and which features are causing them.
+
+![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/shap.png)
+
+## Flask App
+
+I saved the final tuned Random Forest model and deployed it using Flask web app. Flask is a micro web framework written in Python.  It is designed to make getting started quick and easy, with the ability to scale up to complex applications. The app shows churning probability, gauge chart of how severe a customer is and shap values based on customer's data. The final app layout can be seen above.  
 
 
 
