@@ -138,13 +138,13 @@ From the feature importance plot, we can see which features govern the customer 
 
 ### Explainability
 
-We can explain and understand the Random forest model using explainable AI moduals such as Permutation Importance, Partial Dependance plots and Shap values.
+We can explain and understand the Random forest model using explainable AI modules such as Permutation Importance, Partial Dependence plots and Shap values.
 
 1. Permutation Importance shows feature importance by randomly shuffling feature values and measuring how much it degrades our performance.
 
 <img src=https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/perm_imp.png height=250 width=180> 
 
-2. Partial dependance plot is used to see how churning probability changes across the range of particular feature. For example, in below graph of tenure group, the churn probability decreases at a higher rate if a person is in tenure group 2 compared to 1.
+2. Partial dependence plot is used to see how churning probability changes across the range of particular feature. For example, in below graph of tenure group, the churn probability decreases at a higher rate if a person is in tenure group 2 compared to 1.
 
 ![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/pdp-tenure.png)
 
