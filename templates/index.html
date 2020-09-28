@@ -5,7 +5,7 @@
   <title>Customer Churn Prediction</title>
 </head>
 
-<body style="background: Black" text="white">
+<body style="background: black" text="white">
 
  <div class="login">
 	<center><h1>Customer Churn Prediction</h1></center>
@@ -14,89 +14,69 @@
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
 
-      <center>
+    <center>
       <input type="checkbox" id="SeniorCitizen" name="SeniorCitizen" value=1>
-      <label for="SeniorCitizen"> Senior Citizen</label> &nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="SeniorCitizen"> Senior Citizen</label> &nbsp;&nbsp;&nbsp;
       <input type="checkbox" id="Partner" name="Partner" value=1>
-      <label for="Partner">Has a partner</label> &nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="Partner">Has a partner</label> &nbsp;&nbsp;&nbsp;
       <input type="checkbox" id="Dependents" name="Dependents" value=1>
-      <label for="Dependents">Has dependents</label>&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="Dependents">Has dependents</label>&nbsp;&nbsp;&nbsp;
       <input type="checkbox" id="PaperlessBilling" name="PaperlessBilling" value=1>
-      <label for="PaperlessBilling">Paperless Billing</label>
-      </center>
-      <br>
-
-      <center>
-      <label for="OnlineSecurity">Online Security:</label>
-        <select id="OnlineSecurity" name="OnlineSecurity">
-            <option value=0>No</option>
-            <option value=1>Yes</option>
-              <option value=2>No Internet</option>
-        </select> &nbsp;&nbsp;
-
-      <label for="OnlineBackup">Online Backup:</label>
-        <select id="OnlineBackup" name="OnlineBackup">
-            <option value=0>No</option>
-            <option value=1>Yes</option>
-              <option value=2>No Internet</option>
-      </select>&nbsp;&nbsp;
-
-      <label for="DeviceProtection">Device Protection:</label>
-        <select id="DeviceProtection" name="DeviceProtection">
-            <option value=0>No</option>
-            <option value=1>Yes</option>
-              <option value=2>No Internet</option>
-        </select>
-        </center><br>
+      <label for="PaperlessBilling">Paperless Billing</label>&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="PhoneService" name="PhoneService" value=1>
+      <label for="PhoneService">Phone Service</label>&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="MultipleLines" name="MultipleLines" value=1>
+      <label for="MultipleLines">Multiple Lines</label>
+    </center>
+    <br>
 
     <center>
+      <input type="checkbox" id="OnlineSecurity" name="OnlineSecurity" value=1>
+      <label for="OnlineSecurity">Online Security</label>&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="OnlineBackup" name="OnlineBackup" value=1>
+      <label for="OnlineBackup">Online Backup</label>&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="DeviceProtection" name="DeviceProtection" value=1>
+      <label for="DeviceProtection">Device Protection</label>&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="TechSupport" name="TechSupport" value=1>
+      <label for="TechSupport">Tech Support</label>&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="StreamingTV" name="StreamingTV" value=1>
+      <label for="StreamingTV">Streaming TV</label>&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="StreamingMovies" name="StreamingMovies" value=1>
+      <label for="StreamingMovies">Streaming Movies</label>
+     </center>
+     <br>
 
-        <label for="TechSupport">Tech Support:</label>
-        	<select id="TechSupport" name="TechSupport">
-          		<option value=0>No</option>
-          		<option value=1>Yes</option>
-                <option value=2>No Internet</option>
-        	</select>&nbsp;&nbsp;
+    <center>
+      <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value=0>Male</option>
+            <option value=1>Female</option>
+        </select> &nbsp;&nbsp;
 
-      <label for="StreamingTV">Streaming TV:</label>
-      	<select id="StreamingTV" name="StreamingTV">
-        		<option value=0>No</option>
-        		<option value=1>Yes</option>
-              <option value=2>No Internet</option>
-      	</select>
-      &nbsp;&nbsp;
-      <label for="StreamingMovies">Streaming Movies:</label>
-      	<select id="StreamingMovies" name="StreamingMovies">
-        		<option value=0>No</option>
-        		<option value=1>Yes</option>
-              <option value=2>No Internet</option>
-      	</select></center>
-
-      <center><br>
       <label for="InternetService">Internet :</label>
       	<select id="InternetService" name="InternetService">
         		<option value=0>No</option>
         		<option value=1>DSL</option>
               <option value=2>Fiber optic</option>
-      	</select> &nbsp;&nbsp;
+        </select> &nbsp;&nbsp;
 
-<label for="Contract">Contract:</label>
-	<select id="Contract" name="Contract">
-  		<option value=0>Month-to-Month</option>
-  		<option value=1>One-Year</option>
-        <option value=2>Two-Year</option>
-	</select>
-  &nbsp;&nbsp;
+      <label for="Contract">Contract:</label>
+      	<select id="Contract" name="Contract">
+        		<option value=0>Month-to-Month</option>
+        		<option value=1>One-Year</option>
+              <option value=2>Two-Year</option>
+	      </select>&nbsp;&nbsp;
 
-<label for="PaymentMethod">Payment:</label>
-	<select id="PaymentMethod" name="PaymentMethod">
-  		<option value=0>Automatic: Bank Transfer</option>
-  		<option value=1>Automatic: Credit Card</option>
-        <option value=2>Electronic Check</option>
-        <option value=3>Mailed Check</option>
-	</select>
-</center>
+        <label for="PaymentMethod">Payment:</label>
+        	<select id="PaymentMethod" name="PaymentMethod">
+          		<option value=0>Automatic: Bank Transfer</option>
+          		<option value=1>Automatic: Credit Card</option>
+                <option value=2>Electronic Check</option>
+                <option value=3>Mailed Check</option>
+        	</select>
+      </center>
 <br>
+
 <center>
 		<input type="number"  min="0" name="MonthlyCharges" placeholder="Monthly Charges" required="required" />
 <input type="number"  min="0" name="Tenure" placeholder="Tenure in Months" required="required" />
@@ -116,11 +96,12 @@
 
   <br>
   <br>
-  <input type="image" src= {{url_1}} alt="Submit Form" height="100" width="160" onerror="this.style.display='none'"/>
-
+  <input type="image" src= {{url_3}} alt="Submit Form" height="180" width="233" onerror="this.style.display='none'"/>
+  <input type="image" src= {{url_1}} alt="Submit Form" height="180" width="233" onerror="this.style.display='none'"/>
+  <input type="image" src= {{url_4}} alt="Submit Form" height="180" width="233" onerror="this.style.display='none'"/>
   <br>
   <br>
-  <input type="image" src= {{url_2}} alt="Submit Form" height="130" width="750" onerror="this.style.display='none'"/>
+  <input type="image" src= {{url_2}} alt="Submit Form" height="150" width="711" onerror="this.style.display='none'"/>
   </center>
  </div>
 
