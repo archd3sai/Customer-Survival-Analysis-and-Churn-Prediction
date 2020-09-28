@@ -11,6 +11,7 @@ from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
+survmodel = pickle.load(open('survivemodel.pkl', 'rb'))
 
 @app.route('/')
 def home():
@@ -19,6 +20,9 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 
+    gender = 0
+    if request.form["gender"] == 1:
+        gender = 1
     SeniorCitizen = 0
     if 'SeniorCitizen' in request.form:
         SeniorCitizen = 1
@@ -33,22 +37,16 @@ def predict():
         PaperlessBilling = 1
 
     MonthlyCharges = int(request.form["MonthlyCharges"])
+    Tenure = int(request.form["Tenure"])
+    TotalCharges = MonthlyCharges*Tenure
 
-    def tenure(t):
-        if t<=12:
-            return 1
-        elif t>12 and t<=24:
-            return 2
-        elif t>24 and t<=36:
-            return 3
-        elif t>36 and t<=48:
-            return 4
-        elif t>48 and t<=60:
-            return 5
-        else:
-            return 6
+    PhoneService = 0
+    if 'PhoneService' in request.form:
+        PhoneService = 1
 
-    tenure_group = tenure(int(request.form["Tenure"]))
+    MultipleLines = 0
+    if 'MultipleLines' in request.form and PhoneService == 1:
+        MultipleLines = 1
 
     InternetService_Fiberoptic = 0
     InternetService_No = 0
@@ -57,48 +55,29 @@ def predict():
     elif request.form["InternetService"] == 2:
         InternetService_Fiberoptic = 1
 
-    OnlineSecurity_Nointernetservice = 0
-    OnlineSecurity_Yes = 0
+    OnlineSecurity = 0
+    if 'OnlineSecurity' in request.form and InternetService_No == 0:
+        OnlineSecurity = 1
 
-    if request.form["OnlineSecurity"] == 2:
-        OnlineSecurity_Nointernetservice = 1
-    elif request.form["OnlineSecurity"] == 1:
-        OnlineSecurity_Yes = 1
+    OnlineBackup = 0
+    if 'OnlineBackup' in request.form and InternetService_No == 0:
+        OnlineBackup = 1
 
-    OnlineBackup_Nointernetservice = 0
-    OnlineBackup_Yes = 0
-    if request.form["OnlineBackup"] == 2:
-        OnlineBackup_Nointernetservice = 1
-    elif request.form["OnlineBackup"] == 1:
-        OnlineBackup_Yes = 1
+    DeviceProtection = 0
+    if 'DeviceProtection' in request.form and InternetService_No == 0:
+        DeviceProtection = 1
 
-    DeviceProtection_Nointernetservice = 0
-    DeviceProtection_Yes = 0
-    if request.form["DeviceProtection"] == 2:
-        DeviceProtection_Nointernetservice = 1
-    elif request.form["DeviceProtection"] == 1:
-        DeviceProtection_Yes = 1
+    TechSupport = 0
+    if 'TechSupport' in request.form and InternetService_No == 0:
+        TechSupport = 1
 
-    TechSupport_Nointernetservice = 0
-    TechSupport_Yes = 0
-    if request.form["TechSupport"] == 2:
-        TechSupport_Nointernetservice = 1
-    elif request.form["TechSupport"] == 1:
-        TechSupport_Yes = 1
+    StreamingTV = 0
+    if 'StreamingTV' in request.form and InternetService_No == 0:
+        StreamingTV = 1
 
-    StreamingTV_Nointernetservice = 0
-    StreamingTV_Yes = 0
-    if request.form["StreamingTV"] == 2:
-        StreamingTV_Nointernetservice = 1
-    elif request.form["StreamingTV"] == 1:
-        StreamingTV_Yes = 1
-
-    StreamingMovies_Nointernetservice = 0
-    StreamingMovies_Yes = 0
-    if request.form["StreamingMovies"] == 2:
-        StreamingMovies_Nointernetservice = 1
-    elif request.form["StreamingMovies"] == 1:
-        StreamingMovies_Yes = 1
+    StreamingMovies = 0
+    if 'StreamingMovies' in request.form and InternetService_No == 0:
+        StreamingMovies = 1
 
     Contract_Oneyear = 0
     Contract_Twoyear = 0
@@ -117,19 +96,59 @@ def predict():
     elif request.form["PaymentMethod"] == 3:
         PaymentMethod_MailedCheck = 1
 
-    features = [SeniorCitizen, Partner, Dependents, PaperlessBilling, MonthlyCharges, tenure_group, InternetService_Fiberoptic, InternetService_No, OnlineSecurity_Nointernetservice, OnlineSecurity_Yes, OnlineBackup_Nointernetservice, OnlineBackup_Yes, DeviceProtection_Nointernetservice,DeviceProtection_Yes, TechSupport_Nointernetservice,TechSupport_Yes, StreamingTV_Nointernetservice, StreamingTV_Yes,StreamingMovies_Nointernetservice, StreamingMovies_Yes,Contract_Oneyear,Contract_Twoyear,PaymentMethod_CreditCard, PaymentMethod_ElectronicCheck, PaymentMethod_MailedCheck]
+    features = [gender, SeniorCitizen, Partner, Dependents, Tenure, PhoneService, MultipleLines, OnlineSecurity, OnlineBackup,
+       DeviceProtection, TechSupport, StreamingTV, StreamingMovies, PaperlessBilling, MonthlyCharges, TotalCharges,
+       InternetService_Fiberoptic, InternetService_No, Contract_Oneyear,Contract_Twoyear,
+       PaymentMethod_CreditCard, PaymentMethod_ElectronicCheck, PaymentMethod_MailedCheck]
 
-    columns = ['SeniorCitizen', 'Partner', 'Dependents', 'PaperlessBilling', 'MonthlyCharges', 'tenure_group', 'InternetService_Fiber optic', 'InternetService_No', 'OnlineSecurity_No internet service', 'OnlineSecurity_Yes', 'OnlineBackup_No internet service', 'OnlineBackup_Yes', 'DeviceProtection_No internet service', 'DeviceProtection_Yes', 'TechSupport_No internet service', 'TechSupport_Yes', 'StreamingTV_No internet service', 'StreamingTV_Yes', 'StreamingMovies_No internet service', 'StreamingMovies_Yes', 'Contract_One year', 'Contract_Two year', 'PaymentMethod_Credit card (automatic)', 'PaymentMethod_Electronic check', 'PaymentMethod_Mailed check']
+    columns = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'OnlineSecurity', 'OnlineBackup',
+       'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies','PaperlessBilling', 'MonthlyCharges', 'TotalCharges',
+       'InternetService_Fiber optic', 'InternetService_No', 'Contract_One year', 'Contract_Two year',
+       'PaymentMethod_Credit card (automatic)', 'PaymentMethod_Electronic check', 'PaymentMethod_Mailed check']
 
     final_features = [np.array(features)]
     prediction = model.predict_proba(final_features)
 
     output = prediction[0,1]
 
+    # Shap Values
     explainer = joblib.load(filename="explainer.bz2")
     shap_values = explainer.shap_values(np.array(final_features))
     shap.force_plot(explainer.expected_value[1], shap_values[1], columns, matplotlib = True, show = False).savefig('static/images/shap.png', bbox_inches="tight")
 
+    # Hazard and Survival Analysis
+    surv_feats = np.array([gender, SeniorCitizen, Partner, Dependents, PhoneService, MultipleLines, OnlineSecurity, OnlineBackup,
+       DeviceProtection, TechSupport, StreamingTV, StreamingMovies, PaperlessBilling, MonthlyCharges, TotalCharges,
+       InternetService_Fiberoptic, InternetService_No, Contract_Oneyear,Contract_Twoyear,
+       PaymentMethod_CreditCard, PaymentMethod_ElectronicCheck, PaymentMethod_MailedCheck])
+
+    surv_feats = surv_feats.reshape(1, len(surv_feats))
+
+    fig, ax = plt.subplots()
+    survmodel.predict_cumulative_hazard(surv_feats).plot(ax = ax, color = 'red')
+    plt.axvline(x=Tenure, color = 'blue', linestyle='--')
+    plt.legend(labels=['Hazard','Current Position'])
+    ax.set_xlabel('Tenure', size = 10)
+    ax.set_ylabel('Cumulative Hazard', size = 10)
+    ax.set_title('Cumulative Hazard Over Time')
+    fig.savefig('static/images/hazard.png')
+
+    fig, ax = plt.subplots()
+    survmodel.predict_survival_function(surv_feats).plot(ax = ax, color = 'red')
+    plt.axvline(x=Tenure, color = 'blue', linestyle='--')
+    plt.legend(labels=['Survival Function','Current Position'])
+    ax.set_xlabel('Tenure', size = 10)
+    ax.set_ylabel('Survival Probability', size = 10)
+    ax.set_title('Survival Probability Over Time')
+    fig.savefig('static/images/surv.png')
+
+    life = survmodel.predict_survival_function(surv_feats).reset_index()
+    life.columns = ['Tenure', 'Probability']
+    max_life = life.Tenure[life.Probability > 0.1].max()
+
+    CLTV = max_life * MonthlyCharges
+
+    # Gauge plot
     def degree_range(n):
         start = np.linspace(0,180,n+1, endpoint=True)[0:-1]
         end = np.linspace(0,180,n+1, endpoint=True)[1::]
@@ -215,7 +234,7 @@ def predict():
     gauge(Probability = output)
 
     t = time.time()
-    return render_template('index.html', prediction_text='The Probability of customer churn: {}'.format(round(output, 2)), url_1 ='static/images/new_plot.png?{}'.format(t), url_2 ='static/images/shap.png?{}'.format(t))
+    return render_template('index.html', prediction_text='Churn probability is {} and Expected Life Time Value is ${}'.format(round(output, 2), CLTV), url_1 ='static/images/new_plot.png?{}'.format(t), url_2 ='static/images/shap.png?{}'.format(t),url_3 ='static/images/hazard.png?{}'.format(t),url_4 ='static/images/surv.png?{}'.format(t))
 
 
 if __name__ == "__main__":
