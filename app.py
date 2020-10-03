@@ -8,6 +8,8 @@ import shap
 shap.initjs()
 import time
 from flask import Flask, request, jsonify, render_template
+import base64
+import io
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
@@ -114,7 +116,10 @@ def predict():
     # Shap Values
     explainer = joblib.load(filename="explainer.bz2")
     shap_values = explainer.shap_values(np.array(final_features))
-    shap.force_plot(explainer.expected_value[1], shap_values[1], columns, matplotlib = True, show = False).savefig('static/images/shap.png', bbox_inches="tight")
+    shap_img = io.BytesIO()
+    shap.force_plot(explainer.expected_value[1], shap_values[1], columns, matplotlib = True, show = False).savefig(shap_img, bbox_inches="tight", format = 'png')
+    shap_img.seek(0)
+    shap_url = base64.b64encode(shap_img.getvalue()).decode()
 
     # Hazard and Survival Analysis
     surv_feats = np.array([gender, SeniorCitizen, Partner, Dependents, PhoneService, MultipleLines, OnlineSecurity, OnlineBackup,
@@ -124,6 +129,7 @@ def predict():
 
     surv_feats = surv_feats.reshape(1, len(surv_feats))
 
+    hazard_img = io.BytesIO()
     fig, ax = plt.subplots()
     survmodel.predict_cumulative_hazard(surv_feats).plot(ax = ax, color = 'red')
     plt.axvline(x=Tenure, color = 'blue', linestyle='--')
@@ -131,8 +137,11 @@ def predict():
     ax.set_xlabel('Tenure', size = 10)
     ax.set_ylabel('Cumulative Hazard', size = 10)
     ax.set_title('Cumulative Hazard Over Time')
-    fig.savefig('static/images/hazard.png')
+    plt.savefig(hazard_img, format = 'png')
+    hazard_img.seek(0)
+    hazard_url = base64.b64encode(hazard_img.getvalue()).decode()
 
+    surv_img = io.BytesIO()
     fig, ax = plt.subplots()
     survmodel.predict_survival_function(surv_feats).plot(ax = ax, color = 'red')
     plt.axvline(x=Tenure, color = 'blue', linestyle='--')
@@ -140,7 +149,9 @@ def predict():
     ax.set_xlabel('Tenure', size = 10)
     ax.set_ylabel('Survival Probability', size = 10)
     ax.set_title('Survival Probability Over Time')
-    fig.savefig('static/images/surv.png')
+    plt.savefig(surv_img, format = 'png')
+    surv_img.seek(0)
+    surv_url = base64.b64encode(surv_img.getvalue()).decode()
 
     life = survmodel.predict_survival_function(surv_feats).reset_index()
     life.columns = ['Tenure', 'Probability']
@@ -170,6 +181,7 @@ def predict():
         begins the plotting
         """
 
+        gauge_img = io.BytesIO()
         fig, ax = plt.subplots()
 
         ang_range, mid_points = degree_range(4)
@@ -229,12 +241,15 @@ def predict():
         ax.axis('equal')
         plt.tight_layout()
 
-        plt.savefig('static/images/new_plot.png')
+        plt.savefig(gauge_img, format = 'png')
+        gauge_img.seek(0)
+        url = base64.b64encode(gauge_img.getvalue()).decode()
+        return url
 
-    gauge(Probability = output)
+    gauge_url = gauge(Probability = output)
 
     t = time.time()
-    return render_template('index.html', prediction_text='Churn probability is {} and Expected Life Time Value is ${}'.format(round(output, 2), CLTV), url_1 ='static/images/new_plot.png?{}'.format(t), url_2 ='static/images/shap.png?{}'.format(t),url_3 ='static/images/hazard.png?{}'.format(t),url_4 ='static/images/surv.png?{}'.format(t))
+    return render_template('index.html', prediction_text='Churn probability is {} and Expected Life Time Value is ${}'.format(round(output, 2), CLTV), url_1 = gauge_url, url_2 = shap_url, url_3 = hazard_url, url_4 = surv_url)
 
 
 if __name__ == "__main__":
