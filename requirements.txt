@@ -10,7 +10,7 @@ numpy==1.16.2
 scikit-learn==0.22.1
 pickleshare==0.7.5
 matplotlib==3.0.3
-joblib==0.13.2
+joblib==1.2.0
 eli5==0.10.1
 pdpbox==0.2.0
 shap==0.34.0
